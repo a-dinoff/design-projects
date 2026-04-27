@@ -226,7 +226,7 @@
   .chip .hint{display:block;font-family:"IBM Plex Sans",sans-serif;font-size:11px;color:var(--muted);margin-top:2px;font-weight:400;letter-spacing:0;text-transform:none}
   .chip.selected .hint{color:rgba(251,247,238,.6)}
 
-  .s-check .footer{margin-top:-2em;display:flex;justify-content:flex-end;align-items:center;gap:12px;padding-top:14px}
+  .s-check .footer{margin-top:1em;display:flex;justify-content:flex-end;align-items:center;gap:12px;padding-top:14px}
   .s-check .progress{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
   .btn-next{
     background:var(--terracotta);color:var(--cream);border:none;border-radius:14px;
@@ -463,11 +463,13 @@
 
   /* nav row below phone */
   .nav-row{
-    display:flex;align-items:center;gap:14px;
+    display:flex;align-items:flex-end;gap:14px;
     font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);
     letter-spacing:.14em;text-transform:uppercase;
   }
-  .nav-row .step{padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.5)}
+  .nav-item{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .nav-item .step-num{font-size:10px;letter-spacing:.14em;color:var(--muted)}
+  .nav-row .step{padding:calc(6px + 0.5em) calc(10px + 0.5em);border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.5);white-space:nowrap}
   .nav-row .step.current{color:var(--ink);border-color:var(--ink)}
   .nav-row .restart-link{background:none;border:none;color:var(--muted);font-family:inherit;font-size:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
   .nav-row .restart-link:hover{color:var(--ink)}
@@ -736,12 +738,12 @@
       </div>
 
       <div class="nav-row" id="nav">
-        <span class="step current">01 / Home</span>
-        <span class="step">02 / Check-in</span>
-        <span class="step">03 / Match</span>
-        <span class="step">04 / Locked in</span>
-        <span class="step">05 / Cook</span>
-        <span class="step">06 / After</span>
+        <div class="nav-item"><span class="step-num">01</span><span class="step current">Home</span></div>
+        <div class="nav-item"><span class="step-num">02</span><span class="step">Check-in</span></div>
+        <div class="nav-item"><span class="step-num">03</span><span class="step">Match</span></div>
+        <div class="nav-item"><span class="step-num">04</span><span class="step">Locked in</span></div>
+        <div class="nav-item"><span class="step-num">05</span><span class="step">Cook</span></div>
+        <div class="nav-item"><span class="step-num">06</span><span class="step">After</span></div>
         <button class="restart-link" onclick="go(1)">Restart</button>
       </div>
     </section>
