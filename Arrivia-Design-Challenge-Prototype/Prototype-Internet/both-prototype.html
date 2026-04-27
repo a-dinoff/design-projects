@@ -216,6 +216,7 @@
   .chips{display:flex;flex-wrap:wrap;gap:8px}
   .chip{
     flex:1 1 calc(50% - 4px);
+    display:flex;flex-direction:column;justify-content:space-between;
     background:transparent;border:1px solid var(--line);border-radius:12px;
     padding:14px 14px;text-align:left;cursor:pointer;
     font-family:"Fraunces",serif;font-size:17px;color:var(--ink);font-weight:400;
@@ -226,7 +227,7 @@
   .chip .hint{display:block;font-family:"IBM Plex Sans",sans-serif;font-size:11px;color:var(--muted);margin-top:2px;font-weight:400;letter-spacing:0;text-transform:none}
   .chip.selected .hint{color:rgba(251,247,238,.6)}
 
-  .s-check .footer{margin-top:1em;display:flex;justify-content:flex-end;align-items:center;gap:12px;padding-top:14px}
+  .s-check .footer{margin-top:-.5em;display:flex;justify-content:flex-end;align-items:center;gap:12px;padding-top:14px}
   .s-check .progress{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
   .btn-next{
     background:var(--terracotta);color:var(--cream);border:none;border-radius:14px;
@@ -471,8 +472,8 @@
   .nav-item .step-num{font-size:10px;letter-spacing:.14em;color:var(--muted)}
   .nav-row .step{padding:calc(6px + 0.5em) calc(10px + 0.5em);border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.5);white-space:nowrap}
   .nav-row .step.current{color:var(--ink);border-color:var(--ink)}
-  .nav-row .restart-link{background:none;border:none;color:var(--muted);font-family:inherit;font-size:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-  .nav-row .restart-link:hover{color:var(--ink)}
+  .nav-row .restart-link{color:var(--muted);font-family:inherit;font-size:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;text-decoration:none}
+  .nav-row .restart-link:hover{color:var(--ink);border-color:var(--ink)}
 
   /* tiny spacer utility */
   .sp-4{height:4px}.sp-8{height:8px}.sp-12{height:12px}.sp-16{height:16px}
@@ -567,7 +568,7 @@
                 <div class="chips" data-who="T">
                   <button class="chip" data-v="Fresh">Fresh<span class="hint">light, green, bright</span></button>
                   <button class="chip" data-v="Hearty">Hearty<span class="hint">warm, filling, grounded</span></button>
-                  <button class="chip" data-v="Familiar">Familiar<span class="hint">something we've both liked</span></button>
+                  <button class="chip" data-v="Familiar">Familiar<span class="hint">something we both like</span></button>
                   <button class="chip" data-v="New">New<span class="hint">surprise us</span></button>
                 </div>
               </div>
@@ -581,7 +582,7 @@
                 <div class="chips" data-who="M">
                   <button class="chip" data-v="Fresh">Fresh<span class="hint">light, green, bright</span></button>
                   <button class="chip" data-v="Hearty">Hearty<span class="hint">warm, filling, grounded</span></button>
-                  <button class="chip" data-v="Familiar">Familiar<span class="hint">something we've both liked</span></button>
+                  <button class="chip" data-v="Familiar">Familiar<span class="hint">something we both like</span></button>
                   <button class="chip" data-v="New">New<span class="hint">surprise us</span></button>
                 </div>
               </div>
@@ -744,7 +745,7 @@
         <div class="nav-item"><span class="step-num">04</span><span class="step">Locked in</span></div>
         <div class="nav-item"><span class="step-num">05</span><span class="step">Cook</span></div>
         <div class="nav-item"><span class="step-num">06</span><span class="step">After</span></div>
-        <button class="restart-link" onclick="go(1)">Restart</button>
+        <div class="nav-item"><span class="step-num">00</span><button class="step restart-link" onclick="go(1)">Restart</button></div>
       </div>
     </section>
   </main>
