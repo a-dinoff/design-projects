@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Both. — Documentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#F5EFE4;
+    --paper-2:#EBE3D3;
+    --ink:#1A1715;
+    --ink-2:#3B332C;
+    --muted:#8A7F71;
+    --line:#D8CEBC;
+    --terracotta:#B84A1F;
+    --terracotta-2:#8F3410;
+    --olive:#4A5D32;
+    --cream:#FBF7EE;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 600px at 15% 0%, #EBDFC8 0%, transparent 55%),
+      radial-gradient(1000px 500px at 100% 100%, #E8D8B8 0%, transparent 60%),
+      var(--paper);
+    background-attachment:fixed;
+    min-height:100vh;
+    padding:64px 24px 120px;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10  0 0 0 0 0.09  0 0 0 0 0.08  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity:.5;pointer-events:none;mix-blend-mode:multiply;z-index:0;
+  }
+
+  .wrap{
+    position:relative;z-index:1;
+    max-width:720px;
+    margin:0 auto;
+  }
+
+  /* Back link */
+  .back{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);text-decoration:none;
+    margin-bottom:48px;
+  }
+  .back:hover{color:var(--ink)}
+  .back::before{
+    content:"";
+    display:inline-block;
+    width:20px;height:1px;background:currentColor;
+    position:relative;top:-1px;
+  }
+
+  /* Header */
+  .doc-header{margin-bottom:56px;border-bottom:1px solid var(--line);padding-bottom:32px;}
+  .doc-header h1{
+    font-family:"Fraunces",serif;
+    font-size:clamp(36px,5vw,56px);
+    font-weight:300;line-height:1.05;
+    letter-spacing:-.02em;
+    margin-bottom:8px;
+  }
+  .doc-header .subtitle{
+    font-family:"Fraunces",serif;
+    font-size:clamp(16px,2vw,20px);
+    font-weight:300;font-style:italic;
+    color:var(--ink-2);margin-bottom:20px;
+  }
+  .doc-header .byline{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  }
+
+  /* Divider */
+  hr{border:none;border-top:1px solid var(--line);margin:48px 0;}
+
+  /* Section headings */
+  h2{
+    font-family:"Fraunces",serif;
+    font-size:clamp(22px,3vw,30px);
+    font-weight:400;line-height:1.15;
+    margin:56px 0 20px;
+    color:var(--ink);
+  }
+  h3{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--terracotta);
+    margin:40px 0 12px;
+    font-weight:500;
+  }
+
+  /* Body text */
+  p{
+    font-size:16px;line-height:1.75;
+    color:var(--ink-2);
+    margin-bottom:20px;
+  }
+  p:last-child{margin-bottom:0}
+
+  strong{color:var(--ink);font-weight:600;}
+
+  /* Interaction blocks */
+  .interaction{
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:24px 28px;
+    margin:24px 0;
+  }
+  .interaction .label{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:6px;
+  }
+  .interaction p{font-size:15px;margin-bottom:12px;}
+  .interaction p:last-child{margin-bottom:0;}
+
+  /* Appendix list */
+  ul{
+    list-style:none;
+    padding:0;margin:0;
+  }
+  ul li{
+    font-size:15px;line-height:1.7;color:var(--ink-2);
+    padding:10px 0;border-bottom:1px solid var(--line);
+    display:flex;gap:12px;align-items:baseline;
+  }
+  ul li:last-child{border-bottom:none;}
+  ul li::before{
+    content:"—";
+    color:var(--muted);
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;
+    flex-shrink:0;
+  }
+  code{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:13px;
+    background:var(--paper-2);
+    padding:2px 6px;border-radius:2px;
+    color:var(--ink);
+  }
+
+  /* Prototype link */
+  .proto-link{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--terracotta);text-decoration:none;
+    margin-top:48px;
+    border-bottom:1px solid var(--terracotta);
+    padding-bottom:4px;
+  }
+  .proto-link:hover{color:var(--terracotta-2);border-color:var(--terracotta-2);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="both-prototype.html">Back to prototype</a>
+
+  <header class="doc-header">
+    <h1>Both.</h1>
+    <p class="subtitle">A dinner app for couples who don't want to cook two meals.</p>
+    <p class="byline">Submission &nbsp;·&nbsp; Senior Product Designer challenge &nbsp;·&nbsp; Arrivia &nbsp;·&nbsp; Tony Dinoff &nbsp;·&nbsp; April 2026</p>
+  </header>
+
+  <hr>
+
+  <h2>Section A — Design Rationale</h2>
+
+  <h3>Who and what problem</h3>
+  <p>Both is for cohabiting couples, 25–45, where one partner recently adopted a dietary restriction — gluten-free, for GLP-1, vegetarianism, etc. — and the other hasn't. They cook together or for each other at least four weeknights. Two patterns have failed them: cooking two meals (time, dishes, resentment), and the unrestricted partner silently giving up favorites (slow mourning of food identity). The break-point is Tuesday at 5:30pm. The problem isn't "find a gluten-free recipe." Every recipe app treats restriction as a filter on the individual; nobody designs for the social unit. This audience needs a tool that ends the nightly negotiation in under two minutes and produces one meal both people feel good about — without making the restricted partner feel like the problem.</p>
+
+  <h3>Directions considered</h3>
+  <p>I looked at a weekly planner (both diets held in tension), a universal swap engine (any recipe, swap ingredients), and a "couples cookbook" tagged by household. I chose decide-tonight — one screen, one match, one locked-in answer — because the highest-friction moment is the Tuesday 5:30pm standoff, not Sunday planning. Solve the acute moment, earn the right to do planning later.</p>
+
+  <h3>Assumptions and the risky one</h3>
+  <p>I assumed the decision unit is the couple, not the individual; that four crave-clusters (Fresh, Hearty, Familiar, New) cover weeknight intent; that the swap callout can feel respectful rather than othering. The riskiest one: couples will accept a prescriptive "one recipe, one answer" UX instead of browsing. If that's wrong, the product shape changes, so I'd validate it first — eight diary studies over two weeks.</p>
+
+  <h3>Success metrics</h3>
+  <p>North star: both-happy meals per couple per week, target 4+ by week 4. Leading: time-to-decide under 90 seconds, activation within 48 hours, weeknight-use rate. Lagging: share of locked-in meals rated "we both liked it" and retention at weeks 8 and 12. I'd deliberately skip recipe saves and session time — those reward the browsing we're replacing.</p>
+
+  <h3>MVP cuts and v2</h3>
+  <p>Cut: grocery integration, multi-day planning, restaurant mode, households of 3+, nutritional tracking, social sharing, web, and restriction onboarding. V2: a Saturday planning mode that proposes three both-happy dinners for the week; bi-directional pantry awareness (MVP flags a swap from your fridge, v2 picks the recipe from it); a "last week's winners" quick-pick; and a narrow social feature — one couple shares a meal with one other couple, not a public feed.</p>
+
+  <hr>
+
+  <h2>Section B — Design Decisions &amp; Next Steps</h2>
+
+  <h3>Decision 1 — One recipe, not a feed</h3>
+  <p>The match screen shows a single full-bleed recipe card with three actions: Both, Swap it, Show another. I rejected a browseable feed even though users expect one. We give up serendipity and the window-shopping pattern every recipe app leans on. In exchange we get decision speed (the 90-second target) and we rescue the user from the failure mode that drove them to download the app — open a recipe app, browse for twenty minutes, order takeout. With another thirty minutes I'd prototype a browse mode as a sibling tab, not the primary flow, and run a timed task with five couples to see if time-to-decide holds when browsing is one tap away.</p>
+
+  <h3>Decision 2 — The swap callout as a small chip, not a banner</h3>
+  <p>The ingredient swap ("Use tamari instead of soy sauce") sits as a quiet line in a paper-colored card on the match screen, and as a three-letter chip next to the one ingredient it matters for inside cook mode. I considered louder treatments — banner, badge, "swap friendly" label. The trade-off is clarity for first-time users vs. respect for the restricted partner. Loud makes it unambiguous why we picked this recipe, but it frames the restricted partner as the friction every night. I chose integration over announcement because this experience happens 200+ times a year per couple — it has to be livable at that frequency, not just legible on first use. Before shipping I'd validate with six cooks restricted under six months; the newly-restricted cohort is most sensitive to othering.</p>
+
+  <h3>Decision 3 — Craving words instead of dietary words</h3>
+  <p>Both partners tap one of Fresh / Hearty / Familiar / New. I rejected the obvious move — asking for dietary preferences or cuisines — because the restriction is already known to the app, and weeknight intent is emotional, not taxonomic. The risk is real: these four words are a guess, and if users can't find themselves in them the whole flow collapses at screen two. I'd card-sort with fifteen weeknight cooks to validate the clusters before going deeper.</p>
+
+  <h3>What changed after the first pass</h3>
+  <p>The first iteration ran a single recipe — miso salmon — through all six screens, ending on a universal "How was it, really?" rating. Three revisions sharpened it. Adding two more candidates (gnocchi and a Thai coconut curry) forced the "one recipe, one answer" frame to hold three shapes: a standard diet swap, a pantry-memory swap, and a no-swap recipe. Making Cook Mode recipe-specific let the three-letter "Swap" chip land on the one ingredient it matters for, not the whole recipe. And walking the Thai path end-to-end surfaced the revision I'd defend most: "did you both like it?" reads wrong when nothing was adapted — it undersells a naturally-both find and puts the focus on judgment instead of intention. I rewrote After as "Keep this one around?" with "Save to our go-tos" as the primary action and rating demoted to three quiet links. The shift in tone was immediate — relief instead of a quiz — so I rolled the new layout across all three recipes. Copy adapts per meal ("Naturally both" for Thai, "A solid swap-night find" for the others), but the beat is the same: celebrate the meal, save it, move on. The work in a prescriptive product isn't proliferating special cases — it's finding the one beat that carries all of them.</p>
+
+  <h3>If I had another thirty minutes</h3>
+  <p>I'd add a real error state for cravings that can't be reconciled (Fresh + Hearty is fine; Familiar + New is harder). I'd prototype second-phone pairing so one partner can tap from their own device. I'd polish cook-mode — the weakest screen, and where there's a real question about when the swap should surface during cooking. And I'd write more microcopy variants for After, because "Save to our go-tos" is carrying a lot of weight now and I'd want alternatives across different meal temperatures.</p>
+
+  <h3>How I'd validate the core assumption</h3>
+  <p>The core assumption is that couples will use a prescriptive, decide-tonight tool instead of browsing. I'd run eight diary studies over two weeks — give eight couples the prototype (live-coded against a recipe API), have them use it every weeknight, and collect a sixty-second voice note after. I'd measure: fraction of weeknights they open the app, fraction of opens that end in a locked-in meal, and qualitatively — relief, or bossy? If open-rate is under 50% by week two, the prescriptive model is wrong and I'd pivot to a lighter planning tool.</p>
+
+  <hr>
+
+  <h2>Section C — AI Usage Log</h2>
+
+  <p>I used Claude (via Anthropic's Cowork desktop mode) as a design partner throughout. I also leaned on a Claude Code plugin I'd built for my own design practice — it bundles design skills (critique, UX copy, handoff, design system, accessibility) and validation skills (user research, research synthesis). The UX-copy skill shaped the swap-callout voice in Interaction 3; the user-research skill shaped the diary-study plan in Section B. Three representative moments:</p>
+
+  <h3>Interaction 1 — Audience sharpening</h3>
+  <div class="interaction">
+    <p class="label">What I asked</p>
+    <p>I handed Claude the brief and asked for five activity options that'd make a specific enough audience story. I told it to stand on craft, not pander to the hiring company with a travel-adjacent pick.</p>
+    <p class="label">What it gave me</p>
+    <p>Cruise port-day planning, gym-to-crag climbing, spring migration birding, weekend bikepacking, and home cooks. Inside home cooks: mixed-diet couples, CSA subscribers, ADHD home cooks, GLP-1 home cooks. It recommended ADHD for distinctiveness.</p>
+    <p class="label">What I kept, changed, or rejected</p>
+    <p>I kept home cooks and overrode ADHD for mixed-diet couples. The emotional texture — restricted partner's guilt, unrestricted partner's mourning — gives a sharper story for the video than attention-management would. ADHD is the more original design problem; mixed-diet is the more resonant product story. The interview hinges on storytelling more than design novelty, so I went against Claude's pick.</p>
+  </div>
+
+  <h3>Interaction 2 — The initial journey sketch</h3>
+  <div class="interaction">
+    <p class="label">What I asked</p>
+    <p>Given the mixed-diet audience, propose a single end-to-end core journey I can prototype in one sitting.</p>
+    <p class="label">What it gave me</p>
+    <p>Six screens — Home → Check-in → Match → Decide → Cook mode → After — anchored by a shared "craving" check-in (Fresh / Hearty / Familiar / New) and a single-recipe decision screen with three actions.</p>
+    <p class="label">What I kept, changed, or rejected</p>
+    <p>I kept the skeleton. I pushed back on the check-in — Claude first put both partners' chips side by side on one screen with a shared tap. I changed it to a stacked, sequential layout so whose turn it is stays unambiguous whether the couple's sharing one phone or not. I also cut Claude's confetti moment on the "we both liked it" rating — it pushed toward gamified reward imagery. This audience is adult, the feeling we're rewarding is relief not achievement, and gamification would break the editorial tone.</p>
+  </div>
+
+  <h3>Interaction 3 — The swap callout wording</h3>
+  <div class="interaction">
+    <p class="label">What I asked</p>
+    <p>Draft three microcopy variants for the ingredient-swap callout, keeping the tone respectful to the restricted partner.</p>
+    <p class="label">What it gave me</p>
+    <p>(a) "This recipe works great for gluten-free households!" &nbsp; (b) "Smart swap: tamari for soy sauce — you've got it." &nbsp; (c) "Use tamari instead of soy sauce. You have it in the door of the fridge — $0 today."</p>
+    <p class="label">What I kept, changed, or rejected</p>
+    <p>I kept (c). I rejected (a) outright because "gluten-free households" names the restriction in product copy every single night — the exact othering pattern the design is trying to avoid. I rejected (b) because "smart swap" is marketing voice; it flatters the app, not the user. (c) keeps the restricted partner invisible in the copy, flatters the couple's existing pantry knowledge, and the "$0 today" line quietly signals the app knows their fridge — a demonstration of value rather than an announcement of intelligence. It's the single edit that most shaped the product's voice.</p>
+  </div>
+
+  <hr>
+
+  <h2>Appendix</h2>
+
+  <ul>
+    <li><strong>Prototype file:</strong> <code>both-prototype.html</code> — open in any modern browser; scale to mobile viewport if desired. Single self-contained file, but an internet connection is required for the full experience (calls to Google Fonts for typography and Unsplash for photos).</li>
+    <li><strong>Video walkthrough:</strong> See separate file.</li>
+    <li><strong>Design tools used:</strong> Claude (Cowork mode) for ideation, copy drafting, and single-file HTML prototype implementation, plus my design-practice plugin.</li>
+    <li><strong>Known gaps:</strong> Figma frames were deprioritized in favor of a working interactive prototype. A Figma file mirroring the six screens could be reconstructed in about 30 minutes using the HTML as reference.</li>
+  </ul>
+
+  <a class="proto-link" href="both-prototype.html">← View the prototype</a>
+
+</div>
+</body>
+</html>
