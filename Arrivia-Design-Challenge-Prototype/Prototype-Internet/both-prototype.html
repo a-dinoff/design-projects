@@ -95,6 +95,8 @@
   }
   .hint .arrow{width:24px;height:1px;background:var(--muted);position:relative}
   .hint .arrow::after{content:"";position:absolute;right:-1px;top:-3px;width:7px;height:7px;border-top:1px solid var(--muted);border-right:1px solid var(--muted);transform:rotate(45deg)}
+  .hint .arrow-left{width:24px;height:1px;background:var(--muted);position:relative}
+  .hint .arrow-left::after{content:"";position:absolute;left:-1px;top:-3px;width:7px;height:7px;border-top:1px solid var(--muted);border-left:1px solid var(--muted);transform:rotate(-45deg)}
 
   /* phone */
   .phone-wrap{display:flex;flex-direction:column;align-items:center;gap:18px}
@@ -484,7 +486,7 @@
     <!-- LEFT: about / context -->
     <section class="about">
       <div class="wordmark">Both<span class="dot">.</span></div>
-      <div class="tag">Senior Product Designer · Challenge prototype · 2026</div>
+      <div class="tag"><a href="https://tonydinoff.com" style="color:inherit;text-decoration:none;">Tony Dinoff</a> · Senior Product Designer · Challenge prototype · 2026</div>
 
       <h1>A dinner app for couples who don't want to cook <em>two meals.</em></h1>
 
@@ -503,6 +505,10 @@
       </div>
       <div class="hint" style="display:block;">
         Check out the <a href="README.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">documentation</a> to see how I designed &amp; built this prototype in 40 minutes
+      </div>
+      <div class="hint">
+        <span class="arrow-left"></span>
+        <a href="https://tonydinoff.com" style="color:inherit;text-decoration:none;">Back to my case studies</a>
       </div>
     </section>
 
